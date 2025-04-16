@@ -3,11 +3,14 @@
 
 class Fixed {
 public:
-	Fixed(); // setting the object to a valid default state;
+	Fixed();
 	Fixed(const Fixed &other);
-	Fixed(int data);
-	void display();
+	Fixed &operator=(const Fixed &other);
 	~Fixed();
+
+	int getRawBits( void ) const;
+	// void setRawBits(int const raw);
 private:
-	int *value;
+	int value;
+	// const int scale = 8;
 };
