@@ -6,6 +6,18 @@ Fixed::Fixed()
 	std::cout << "Default constructor called" << std::endl;
 }
 
+Fixed::Fixed(const int n)
+{
+	std::cout << "int constructor called" << std::endl;
+	this->value = n << scaleBits;
+}
+
+Fixed::Fixed(const float n)
+{
+	std::cout << "float constructor called" << std::endl;
+	this->value = roundf(n * (1 << this->scaleBits));
+}
+
 Fixed::Fixed(const Fixed &other)
 {
 	this->value = other.value;
@@ -22,7 +34,17 @@ Fixed &Fixed::operator=(const Fixed &other)
 
 int Fixed::getRawBits( void ) const {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (value);
+	return (this->value);
+}
+
+int Fixed::toInt(void) const
+{
+	return (this->value >> this->scaleBits);
+}
+
+float Fixed::toFloat(void) const
+{
+	return ((float)this->value / (float)(1 << this->scaleBits));
 }
 
 Fixed::~Fixed()
