@@ -51,3 +51,9 @@ Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
+
+std::ostream &operator<<(std::ostream &out, Fixed const &object)
+{
+	out << object.toFloat();
+	return (out);
+}

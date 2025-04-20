@@ -20,4 +20,6 @@ private:
 	int value;
 	static const int scaleBits = 8;
 };
+
+std::ostream &operator<<(std::ostream &out, Fixed const &object);
  
