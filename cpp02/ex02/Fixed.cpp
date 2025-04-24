@@ -37,6 +37,11 @@ int Fixed::getRawBits( void ) const {
 	return (this->value);
 }
 
+void Fixed::setRawBits(int const value)
+{
+	this->value = value;
+}
+
 int Fixed::toInt(void) const
 {
 	return (this->value >> this->scaleBits);
@@ -123,6 +128,64 @@ bool Fixed::operator!=(Fixed const &obj)
 	if (this->value != obj.value)
 		return (true);
 	return (false);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp(*this);
+	++this->value;
+	return (tmp);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	--this->value;
+	return (tmp);
+}
+
+Fixed Fixed::operator++()
+{
+	++this->value;
+	return (*this);
+}
+
+Fixed Fixed::operator--()
+{
+	--this->value;
+	return (*this);
+}
+
+Fixed &Fixed::min(Fixed &first, Fixed &second)
+{
+	if (first.toFloat() <= second.toFloat())
+		return (first);
+	else
+		return (second);
+}
+
+Fixed const &Fixed::min(Fixed const &first, Fixed const &second)
+{
+	if (first.toFloat() <= second.toFloat())
+		return (first);
+	else
+		return (second);
+}
+
+Fixed &Fixed::max(Fixed &first, Fixed &second)
+{
+	if (first.toFloat() >= second.toFloat())
+		return (first);
+	else
+		return (second);
+}
+
+Fixed const &Fixed::max(Fixed const &first, Fixed const &second)
+{
+	if (first.toFloat() >= second.toFloat())
+		return (first);
+	else
+		return (second);
 }
 
 Fixed::~Fixed()
