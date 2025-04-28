@@ -39,7 +39,7 @@ public:
 	void setRawBits(int const value);
 private:
 	int value;
-	static const int scaleBits = 8;
+	static const int scaleBits;
 };
 
 std::ostream &operator<<(std::ostream &out, Fixed const &object);

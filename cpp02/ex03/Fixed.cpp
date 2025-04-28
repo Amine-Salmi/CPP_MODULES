@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+const int Fixed::scaleBits = 8;
+
 Fixed::Fixed()
 {
 	this->value = 0;
