@@ -39,6 +39,11 @@ int Fixed::getRawBits( void ) const {
 	return (this->value);
 }
 
+void Fixed::setRawBits(int const raw) {
+	std::cout << "setRawBits member function called" << std::endl;
+	this->value = raw;
+}
+
 int Fixed::toInt(void) const
 {
 	return (this->value >> this->scaleBits);

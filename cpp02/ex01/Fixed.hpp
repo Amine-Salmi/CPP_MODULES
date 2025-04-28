@@ -15,9 +15,8 @@ public:
 	
 	int toInt( void ) const;
 	float toFloat( void ) const;
-	// float toFloat( void );
 	int getRawBits( void ) const;
-	// void setRawBits(int const raw);
+	void setRawBits(int const raw);
 private:
 	int value;
 	static const int scaleBits;
