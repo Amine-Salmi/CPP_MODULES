@@ -1,10 +1,10 @@
 #include "Point.hpp"
 
 int main( void ) {
-	Point a(2, 3);
-	Point b(0, 0);
-	Point c(3, 1);
-	Point p(1, 1);
+	Point a(3, 3);
+	Point b(1, 1);
+	Point c(4, 1);
+	Point p(4, 3);
 	bool res;
 
 	res = bsp(a, b, c, p);
