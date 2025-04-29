@@ -8,8 +8,11 @@ int main( void ) {
 	bool res;
 
 	res = bsp(a, b, c, p);
-	if (res == true)
-		std::cout << "yes" << std::endl;
+	if (res)
+		std::cout << "The point (" << p.getX() << "," << p.getY() 
+			<< ") is inside the triangle." << std::endl;
 	else
-		std::cout << "no" << std::endl;
-}
+		std::cout << "The point (" << p.getX() << "," << p.getY() 
+			<< ") is outside the triangle." << std::endl;
+	return (0);
+}	
