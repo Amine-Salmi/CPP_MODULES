@@ -24,6 +24,11 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	Fixed areaCPB = area(c, point, b);
 	Fixed areaABC = area(a, b, c);
 
+	if (areaABC == 0)
+	{
+		std::cout << "The points do not form a valid triangle." << std::endl;
+		exit(EXIT_FAILURE);
+	}
 	if (areaAPB + areaAPC + areaCPB == areaABC)
 		return (true);
 	return (false);

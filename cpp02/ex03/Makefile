@@ -1,6 +1,6 @@
 NAME = Fixed
 HEADER = Fixed.hpp
-HEADERPINT = Point.hpp
+HEADERPOINT = Point.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
@@ -11,7 +11,7 @@ OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) $(HEADER) $(HEADERPINT)
+$(NAME) : $(OBJ) $(HEADER) $(HEADERPOINT)
 	$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 %.o : %.cpp
