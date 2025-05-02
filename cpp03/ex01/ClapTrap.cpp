@@ -1,5 +1,9 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : name(""), hitPoints(0), energyPoints(0), attackDamage(0) {
+	std::cout << "Default constructor is called for bas class" << std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string& name): name(name), hitPoints(10), energyPoints(10), attackDamage(0) {
 	std::cout << "constructor is called for " << name << std::endl;
 }
@@ -75,5 +79,5 @@ int ClapTrap::getAttackDamage() const {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "destructor is called" << std::endl;
+	std::cout << "ClapTrap destructor is called" << std::endl;
 }

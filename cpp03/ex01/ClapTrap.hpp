@@ -8,6 +8,7 @@ private:
 	unsigned int energyPoints;
 	unsigned int attackDamage;
 public:
+	ClapTrap();
 	ClapTrap(const std::string& name);
 	~ClapTrap();
 
@@ -19,10 +20,4 @@ public:
 	int getHitPoints() const;
 	int getEnergyPoints() const;
 	int getAttackDamage() const;
-};
-
-class ScavTrap : public ClapTrap {
-public:
-	ScavTrap();
-
 };
