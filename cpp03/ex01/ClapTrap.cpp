@@ -56,7 +56,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		" has no energy left to repair itself!" << std::endl;
 		return ;
 	}
-	unsigned int healAmount = std::min(amount, 10 - hitPoints);
+	unsigned int healAmount = std::min(amount, 100 - hitPoints);
 	this->hitPoints += healAmount;
 	std::cout << "ClapTrap " << getName() <<
 	" repairs itself, restoring " << amount << " hit points!" << std::endl;

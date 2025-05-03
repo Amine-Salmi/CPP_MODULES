@@ -3,10 +3,9 @@
 int main()
 {
 	ScavTrap obj("Amine");
-	std::cout << "Name: " << obj.getName() << std::endl;
-	std::cout << "HP  : " << obj.getHitPoints() << std::endl;
-	std::cout << "EP  : " << obj.getEnergyPoints() << std::endl;
-	std::cout << "DM  : " << obj.getAttackDamage() << std::endl;
+	obj.attack("target1");
+	obj.guardGate();
+	obj.guardGate();
 	// ClapTrap obj;
 	// ClapTrap clapTrap("Roland");
 	
