@@ -1,11 +1,10 @@
-#include "ScavTrap.hpp"
+// #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-	ScavTrap obj("Amine");
-	obj.attack("target1");
-	obj.guardGate();
-	obj.guardGate();
+	FragTrap obj("amine");
+	obj.highFivesGuys();
 	// ClapTrap obj;
 	// ClapTrap clapTrap("Roland");
 	
