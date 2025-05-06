@@ -3,7 +3,8 @@
 int main()
 {
 	ScavTrap obj("Amine");
-	obj.attack("target1");
+	ScavTrap obj2;
+	obj2 = obj;
 	obj.guardGate();
 	obj.guardGate();
 	// ClapTrap obj;

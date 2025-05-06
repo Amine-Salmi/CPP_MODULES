@@ -10,7 +10,10 @@ protected:
 public:
 	ClapTrap();
 	ClapTrap(const std::string& name);
+	ClapTrap(const ClapTrap &copy);
 	~ClapTrap();
+
+	ClapTrap &operator=(const ClapTrap &src);
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
