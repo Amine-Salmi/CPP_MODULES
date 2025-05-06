@@ -5,6 +5,7 @@ int main()
 {
 	DiamondTrap diamondTrap("amine");
 	diamondTrap.attack("target simone");
+	diamondTrap.whoAmI();
 	// FragTrap obj("amine");
 	// obj.highFivesGuys();
 	// ClapTrap obj;
