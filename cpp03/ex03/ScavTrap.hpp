@@ -1,6 +1,8 @@
+#pragma once
+
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : public virtual ClapTrap {
 private:
         bool isGuarding;
 public:

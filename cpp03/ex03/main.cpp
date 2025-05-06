@@ -1,10 +1,12 @@
 // #include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main()
 {
-	FragTrap obj("amine");
-	obj.highFivesGuys();
+	DiamondTrap diamondTrap("amine");
+	diamondTrap.attack("target simone");
+	// FragTrap obj("amine");
+	// obj.highFivesGuys();
 	// ClapTrap obj;
 	// ClapTrap clapTrap("Roland");
 	
@@ -25,4 +27,5 @@ int main()
 	// clapTrap.takeDamage(7);
 	// clapTrap.attack("target3");
 	// clapTrap.beRepaired(5);
+	return (0);
 }
