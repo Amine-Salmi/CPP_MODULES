@@ -2,9 +2,12 @@
 
 int main()
 {
-	ScavTrap obj("Amine");
-	ScavTrap obj2;
-	obj.guardGate();
-	obj2 = obj;
-	obj2.guardGate();
+    ScavTrap scav("S1");
+    
+    scav.attack("enemy");
+    scav.takeDamage(20);
+    scav.beRepaired(10);
+    scav.guardGate();
+    
+    return 0;
 }

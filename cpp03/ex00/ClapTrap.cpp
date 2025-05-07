@@ -9,7 +9,7 @@ ClapTrap::ClapTrap(const ClapTrap &copy) : name(copy.name), hitPoints(copy.hitPo
 }
 
 ClapTrap::ClapTrap(const std::string& name): name(name), hitPoints(10), energyPoints(10), attackDamage(0) {
-	std::cout << "constructor is called for ClapTrap" << std::endl;
+	std::cout << "Constructor is called for (ClapTrap) Name: " << name << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -39,7 +39,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 			this->hitPoints -= amount;
 		std::cout << "ClapTrap " << getName() << " takes " <<
 		amount << " points of damage! Remaining hit points: " << 
-		getHitPoints() << "." << std::endl;
+		getHitPoints() << std::endl;
 	}
 	else {
 		std::cout << "ClapTrap " << getName() << " is already dead!" << std::endl;

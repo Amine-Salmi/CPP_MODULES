@@ -14,7 +14,5 @@ int main()
 	clapTrap.attack("target 2");
 
 	clapTrap.takeDamage(5);
-	std::cout << "HP: " << clapTrap.getHitPoints() << std::endl;
 	clapTrap.beRepaired(2);
-	std::cout << "HP: " << clapTrap.getHitPoints() << std::endl;
 }
