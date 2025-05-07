@@ -53,11 +53,12 @@ void ScavTrap::guardGate() {
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 {
-	std::cout << "Assignation operator is called for ScavTrap" << std::endl;
+	std::cout << "Assignment operator is called for ScavTrap" << std::endl;
 	this->name = src.name;
 	this->hitPoints = src.hitPoints;
 	this->energyPoints = src.energyPoints;
 	this->attackDamage = src.attackDamage;
+	this->isGuarding = src.isGuarding;
 	return *this;
 }
 

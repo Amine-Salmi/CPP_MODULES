@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 
@@ -9,8 +11,11 @@ protected:
 	unsigned int attackDamage;
 public:
 	ClapTrap();
+	ClapTrap(const ClapTrap &copy);
 	ClapTrap(const std::string& name);
 	~ClapTrap();
+
+	ClapTrap &operator=(const ClapTrap &src);
 
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);

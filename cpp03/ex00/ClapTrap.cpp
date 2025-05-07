@@ -84,7 +84,7 @@ int ClapTrap::getAttackDamage() const {
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 {
-	std::cout << "Assignation operator is called for ClapTrap" << std::endl;
+	std::cout << "Assignment operator is called for ClapTrap" << std::endl;
 	this->name = src.name;
 	this->hitPoints = src.hitPoints;
 	this->energyPoints = src.energyPoints;

@@ -1,6 +1,5 @@
 NAME = ClapTrap
-HEADER = ClapTrap.hpp
-HEADER2 = ScavTrap.hpp
+HEADERS = ClapTrap.hpp ScavTrap.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
@@ -11,10 +10,10 @@ OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) $(HEADER) $(HEADER2)
+$(NAME) : $(OBJ)
 	$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp
+%.o : %.cpp $(HEADERS)
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean :

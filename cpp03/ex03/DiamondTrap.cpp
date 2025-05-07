@@ -8,6 +8,10 @@ DiamondTrap::DiamondTrap() : FragTrap(), ScavTrap() {
     std::cout << "Default Constructor is called for DiamondTrap" << std::endl;
 }
 
+DiamondTrap::DiamondTrap(const DiamondTrap &copy) :  ClapTrap(copy), FragTrap(copy), ScavTrap(copy) {
+    std::cout << "Copy constructor is called for DiamondTrap" << std::endl;
+}
+
 DiamondTrap::DiamondTrap(const std::string &name) : ClapTrap(name + "_clapTrap"), FragTrap(name), ScavTrap(name) {
     this->name = name;
     this->hitPoints = FragTrap::hitPoints;
@@ -23,6 +27,16 @@ void DiamondTrap::attack(const std::string& target) {
 void DiamondTrap::whoAmI() {
     std::cout << "DiamondTrap name: " << this->name << std::endl;
     std::cout << "ClapTrap name: " << ClapTrap::name << std::endl;
+}
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)
+{
+	std::cout << "Assignment operator is called for DiamondTrap" << std::endl;
+	this->name = src.name;
+	this->hitPoints = src.hitPoints;
+	this->energyPoints = src.energyPoints;
+	this->attackDamage = src.attackDamage;
+	return *this;
 }
 
 DiamondTrap::~DiamondTrap() {

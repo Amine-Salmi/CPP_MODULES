@@ -4,7 +4,8 @@ ClapTrap::ClapTrap() : name(""), hitPoints(0), energyPoints(0), attackDamage(0) 
 	std::cout << "Default Constructor is called for ClapTrap" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &copy) : name(copy.name), hitPoints(copy.hitPoints), energyPoints(copy.energyPoints), attackDamage(copy.attackDamage) {
+ClapTrap::ClapTrap(const ClapTrap &copy) : name(copy.name), hitPoints(copy.hitPoints), 
+	energyPoints(copy.energyPoints), attackDamage(copy.attackDamage) {
 	std::cout << "Copy constructor is called for ClapTrap" << std::endl;
 }
 
@@ -84,7 +85,7 @@ int ClapTrap::getAttackDamage() const {
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 {
-	std::cout << "Assignation operator is called for ClapTrap" << std::endl;
+	std::cout << "Assignment operator is called for ClapTrap" << std::endl;
 	this->name = src.name;
 	this->hitPoints = src.hitPoints;
 	this->energyPoints = src.energyPoints;

@@ -6,6 +6,11 @@ ScavTrap::ScavTrap() : ClapTrap() {
     std::cout << "Default Constructor is called for Scavtrap" << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy) {
+    this->isGuarding = copy.isGuarding;
+	std::cout << "Copy constructor is called for ScavTrap" << std::endl;
+}
+
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name) {
     this->energyPoints = 50;
     this->isGuarding = false;
@@ -39,6 +44,18 @@ void ScavTrap::guardGate() {
     else
         std::cout << "ScavTrap " << this->name << " is already in Gate Keeper mode!" << std::endl;
 }
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &src)
+{
+	std::cout << "Assignment operator is called for ScavTrap" << std::endl;
+	this->name = src.name;
+	this->hitPoints = src.hitPoints;
+	this->energyPoints = src.energyPoints;
+	this->attackDamage = src.attackDamage;
+	this->isGuarding = src.isGuarding;
+	return *this;
+}
+
 
 ScavTrap::~ScavTrap()  {
     std::cout << "Destructor is called for ScavTrap" << std::endl;

@@ -4,8 +4,9 @@
 int main()
 {
 	DiamondTrap diamondTrap("amine");
-	diamondTrap.attack("target simone");
-	diamondTrap.whoAmI();
+	DiamondTrap diamondTrap2;
+
+	diamondTrap2 = diamondTrap;
 	// FragTrap obj("amine");
 	// obj.highFivesGuys();
 	// ClapTrap obj;
