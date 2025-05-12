@@ -21,8 +21,25 @@ Character &Character::operator=(const Character &src) {
 	return (*this);
 }
 
+void Character::equip(AMateria* m) {
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->inventory[i] == NULL)
+		{
+			this->inventory[i] = m;
+			std::cout << "inv 1 " << this->inventory[i] << std::endl;
+			std::cout << "call equip" << std::endl;
+			return ;
+		}
+	}
+}
+
 std::string const &Character::getName() const {
 	return (this->name);
+}
+
+AMateria **Character::getInventory() {
+	return (this->inventory);
 }
 
 Character::~Character() {
