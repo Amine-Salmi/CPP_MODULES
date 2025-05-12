@@ -1,5 +1,5 @@
 NAME = prog
-HEADER = AMateria.hpp Ice.hpp ICharacter.hpp
+HEADER = AMateria.hpp Ice.hpp ICharacter.hpp Character.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++

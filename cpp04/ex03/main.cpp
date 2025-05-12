@@ -1,8 +1,8 @@
 #include "Ice.hpp"
+#include "Character.hpp"
 
 int main() {
-	AMateria *A = new Ice();
-	AMateria *b;
-	b = A->clone();
-	std::cout << "type: " << b->getType() << std::endl;
+	ICharacter* player = new Character("player1");
+	AMateria *ice = new Ice();
+	ice->use(*player);
 }
