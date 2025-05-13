@@ -9,4 +9,5 @@ int main() {
 	ice->use(*player);
 	cure->use(*player);
 	player->equip(ice);
+	player->equip(cure);
 }

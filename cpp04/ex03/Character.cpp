@@ -22,15 +22,34 @@ Character &Character::operator=(const Character &src) {
 }
 
 void Character::equip(AMateria* m) {
+	if (m == NULL)
+	{
+		std::cout << "Cannot equip NULL materia!" << std::endl;
+		return ;
+	}
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->inventory[i] == NULL)
 		{
 			this->inventory[i] = m;
-			std::cout << "inv 1 " << this->inventory[i] << std::endl;
-			std::cout << "call equip" << std::endl;
 			return ;
 		}
+	}
+	std::cout << "The inventory is full" << std::endl;
+}
+
+void Character::unequip(int idx) {
+	if (idx >= 0 && idx < 4 && this->inventory[idx])
+	{
+		this->inventory[idx] = NULL;
+		return ;
+	}
+	std::cout << "invalid idnex" << std::endl;
+}
+
+void Character::use(int idx, ICharacter& target) {
+	if (idx >= 0 && idx < 4)
+	{
 	}
 }
 
