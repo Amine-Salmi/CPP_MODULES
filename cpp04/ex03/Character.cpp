@@ -44,13 +44,16 @@ void Character::unequip(int idx) {
 		this->inventory[idx] = NULL;
 		return ;
 	}
-	std::cout << "invalid idnex" << std::endl;
+	std::cout << "Cannot use materia, index " <<  idx << " is invalid or empty!" << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target) {
-	if (idx >= 0 && idx < 4)
+	if (idx >= 0 && idx < 4 && this->inventory[idx])
 	{
+		this->inventory[idx]->use(target);
+		return ;
 	}
+	std::cout << "Cannot use materia, index " <<  idx << " is invalid or empty!" << std::endl;
 }
 
 std::string const &Character::getName() const {
