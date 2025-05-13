@@ -3,21 +3,31 @@
 #include "Character.hpp"
 
 int main() {
-	ICharacter* player = new Character("player1");
-	ICharacter* playe1 = new Character("player2");
+	ICharacter* player1 = new Character("player1");
+	ICharacter* player2 = player1;
 	AMateria *ice = new Ice();
 	AMateria *cure = new Cure(); 
-	ice->use(*player);
-	cure->use(*player);
-	player->equip(ice);
-	player->equip(cure);
+	ice->use(*player1);
+	cure->use(*player1);
+	player1->equip(ice);
+	player1->equip(cure);
+	player2->unequip(1);
 	for (int i = 0; i < 4; i++) {
-		if (player->getInventory()[i])
+		if (player2->getInventory()[i])
 		{
-			std::cout << "inv[" << i << "]: " << player->getInventory()[i]->getType() << std::endl;
+			std::cout << "inv for copy player [" << i << "]: " << player2->getInventory()[i]->getType() << std::endl;
 		} else {
-			std::cout << "inv[" << i << "]: Empty" << std::endl;
+			std::cout << "inv  for copy player [" << i << "]: Empty" << std::endl;
 		}
 	}
-	player->use(0, *playe1);
+	std::cout << "-------------------------" << std::endl;
+	for (int i = 0; i < 4; i++) {
+		if (player1->getInventory()[i])
+		{
+			std::cout << "inv  for org player [" << i << "]: " << player1->getInventory()[i]->getType() << std::endl;
+		} else {
+			std::cout << "inv  for org player [" << i << "]: Empty" << std::endl;
+		}
+	}
+	player1->use(0, *player2);
 }

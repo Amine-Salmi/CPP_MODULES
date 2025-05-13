@@ -5,7 +5,11 @@ Character::Character() {
 }
 
 Character::Character(const Character &copy) {
-	(void)copy;
+	this->name = copy.name;
+	for (int i = 0; i < 4; i++) {
+		if (this->inventory[i])
+			this->inventory[i] = copy.inventory[i]->clone();
+	}
 	std::cout << "copy constructor for character is called" << std::endl;
 }
 
@@ -18,6 +22,10 @@ Character &Character::operator=(const Character &src) {
 	if (this == &src)
 		return (*this);
 	this->name = src.name;
+	for (int i = 0; i < 4; i++) {
+		if (this->inventory[i])
+ 			this->inventory[i] = src.inventory[i]->clone();
+	}
 	return (*this);
 }
 
