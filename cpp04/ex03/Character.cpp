@@ -4,18 +4,18 @@ Character::Character() {
 	std::cout << "Default constructor for character is called" << std::endl;
 }
 
-Character::Character(const Character &copy) {
-	this->name = copy.name;
-	for (int i = 0; i < 4; i++) {
-		if (this->inventory[i])
-			this->inventory[i] = copy.inventory[i]->clone();
-	}
-	std::cout << "copy constructor for character is called" << std::endl;
-}
-
 Character::Character(std::string const &name) {
 	this->name = name;
 	std::cout << "Constructor for character is called" << std::endl;
+}
+
+Character::Character(const Character &copy) {
+	this->name = copy.name;
+	for (int i = 0; i < 4; i++) {
+		if (copy.inventory[i])
+			this->inventory[i] = copy.inventory[i]->clone();
+	}
+	std::cout << "copy constructor for character is called" << std::endl;
 }
 
 Character &Character::operator=(const Character &src) {
@@ -23,7 +23,7 @@ Character &Character::operator=(const Character &src) {
 		return (*this);
 	this->name = src.name;
 	for (int i = 0; i < 4; i++) {
-		if (this->inventory[i])
+		if (src.inventory[i])
  			this->inventory[i] = src.inventory[i]->clone();
 	}
 	return (*this);
