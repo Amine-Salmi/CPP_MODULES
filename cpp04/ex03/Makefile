@@ -1,11 +1,11 @@
 NAME = prog
-HEADER = AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp Character.hpp
+HEADER = AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp Character.hpp IMateriaSource.hpp MateriaSource.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
 RM = rm -rf
 
-SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp
+SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)

@@ -1,6 +1,7 @@
 #include "Character.hpp"
 
 Character::Character() {
+	this->name = "";
 	std::cout << "Default constructor for character is called" << std::endl;
 }
 
@@ -26,6 +27,7 @@ Character &Character::operator=(const Character &src) {
 		if (src.inventory[i])
  			this->inventory[i] = src.inventory[i]->clone();
 	}
+	std::cout << "opratore is called" << std::endl;
 	return (*this);
 }
 
