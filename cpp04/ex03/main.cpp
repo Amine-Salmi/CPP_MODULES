@@ -13,11 +13,27 @@ int main() {
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+	for (int i = 0; i < 4; i++) {
+		if (me->getInventory()[i])
+		{
+			std::cout << "my power [" << i << "]: " << me->getInventory()[i]->getType() << std::endl;
+		} else {
+			std::cout << "my power [" << i << "]: Empty" << std::endl;
+		}
+	}
+	// bob = me;
+	std::cout << "--------------------" << std::endl;
+	for (int i = 0; i < 4; i++) {
+		if (bob->getInventory()[i])
+		{
+			std::cout << "bob power [" << i << "]: " << bob->getInventory()[i]->getType() << std::endl;
+		} else {
+			std::cout << "bob power [" << i << "]: Empty" << std::endl;
+		}
+	}
 	delete bob;
 	delete me;
 	delete src;
