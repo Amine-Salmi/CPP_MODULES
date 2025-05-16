@@ -24,10 +24,13 @@ Character &Character::operator=(const Character &src) {
 		return (*this);
 	this->name = src.name;
 	for (int i = 0; i < 4; i++) {
+		if (this->inventory[i]) {
+			delete this->inventory[i];
+			this->inventory[i] = NULL;
+		}
 		if (src.inventory[i])
  			this->inventory[i] = src.inventory[i]->clone();
 	}
-	std::cout << "opratore is called" << std::endl;
 	return (*this);
 }
 
@@ -61,6 +64,8 @@ void Character::use(int idx, ICharacter& target) {
 	if (idx >= 0 && idx < 4 && this->inventory[idx])
 	{
 		this->inventory[idx]->use(target);
+		delete this->inventory[idx];
+		this->inventory[idx] = NULL;
 		return ;
 	}
 	std::cout << "Cannot use materia, index " <<  idx << " is invalid or empty!" << std::endl;
@@ -75,5 +80,9 @@ AMateria **Character::getInventory() {
 }
 
 Character::~Character() {
+	for (int i = 0; i < 4; i++) {
+		if (this->inventory[i])
+			delete this->inventory[i];
+	}
 	std::cout << "Destructor for character is called" << std::endl;
 }

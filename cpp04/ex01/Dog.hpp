@@ -9,7 +9,6 @@ private:
 public:
 	Dog();
 	Dog(const Dog &copy);
-	// Dog(const std::string &name);
 	~Dog();
 
 	Dog &operator=(const Dog &src);

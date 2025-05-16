@@ -44,7 +44,6 @@ std::string Brain::getIdea(int index) {
 		std::cout << "No Idea ...." << std::endl;
 		return (NULL);
 	}
-	// std::cout << "index [" << index << "]" << " ----> " << this->ideas[index] << std::endl;
 	return (this->ideas[index]);
 }
 

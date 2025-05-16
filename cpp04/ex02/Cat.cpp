@@ -39,5 +39,6 @@ std::string Cat::getIdea(int index) {
 }
 
 Cat::~Cat() {
+	delete this->brain;
 	std::cout << "Destructor for Cat is called" << std::endl;
 }

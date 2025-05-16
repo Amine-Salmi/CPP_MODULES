@@ -33,9 +33,7 @@ Brain &Brain::operator=(const Brain& src) {
 
 void Brain::setIdea(int index, const std::string idea) {
 	if (index < 100 && index >= 0)
-	{
 		this->ideas[index] = idea;
-	}
 }
 
 std::string Brain::getIdea(int index) {
@@ -44,7 +42,6 @@ std::string Brain::getIdea(int index) {
 		std::cout << "No Idea ...." << std::endl;
 		return (NULL);
 	}
-	// std::cout << "index [" << index << "]" << " ----> " << this->ideas[index] << std::endl;
 	return (this->ideas[index]);
 }
 

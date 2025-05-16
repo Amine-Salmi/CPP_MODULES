@@ -16,5 +16,6 @@ int main()
 	delete i;
 	delete j;
 	delete meta;
+	system("leaks prog");
 	return 0;
 }
