@@ -5,7 +5,7 @@ Bureaucrat::Bureaucrat() : name(""), grade(0) {
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name), grade(grade) {
-	std::cout << "init Consyructor called" << std::endl;
+	std::cout << "init Constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
