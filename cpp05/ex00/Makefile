@@ -1,7 +1,7 @@
 NAME = prog
 HEADER = Bureaucrat.hpp
 
-CPPFLAGS = -Wall -Wextra -Werror #-std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
 RM = rm -rf
 
