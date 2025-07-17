@@ -34,6 +34,10 @@ AForm *makePresidentialPardon(const std::string &target) {
     return (new PresidentialPardonForm(target));
 }
 
+const char *Intern::InvalidFormNameException::what() const throw() {
+    return ("invalid name");
+}
+
 AForm *Intern::makeForm(const std::string name, const std::string target) {
     std::string formNames[] = {
         "shrubbery creation",
@@ -56,6 +60,5 @@ AForm *Intern::makeForm(const std::string name, const std::string target) {
             return ptr[i](target);
         }
     }
-    std::cout << "invalid name" << std::endl;
-    return (NULL);
+    throw InvalidFormNameException();
 }
