@@ -19,7 +19,6 @@ public:
         else
             this->arr = new T[arrSize]();
     }
-
     Array(const Array& copy) : arrSize(copy.arrSize) {
         if (this->arrSize == 0)
             this->arr = nullptr;
