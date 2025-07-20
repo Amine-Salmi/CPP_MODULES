@@ -18,10 +18,33 @@ void Span::addNumber(const int num) {
 		throw std::out_of_range("Span is full");
 }
 
+int min(int a, int b) {
+	return (a < b) ? a : b; 
+}
+
 unsigned int Span::shortestSpan() {
 	if (this->_numbers.empty() || this->_numbers.size() <= 1)
 		throw std::runtime_error("empty span");
-	
-	return (0);
+
+	std::vector<int> arrResult = this->_numbers;
+	std::sort(arrResult.begin(), arrResult.end());
+	unsigned int minSpan = std::numeric_limits<unsigned int>::max();
+	for (unsigned int i = 0; i < (arrResult.size() - 1); i++)
+		minSpan = std::min(minSpan, static_cast<unsigned int>(arrResult[i + 1] - arrResult[i]));
+	return (minSpan);
 }
 
+unsigned int Span::longestSpan() {
+	if (this->_numbers.empty() || this->_numbers.size() <= 1)
+		throw std::runtime_error("empty span");
+	std::vector<int>::iterator max = std::max_element(this->_numbers.begin(), this->_numbers.end());
+	std::vector<int>::iterator min = std::min_element(this->_numbers.begin(), this->_numbers.end());
+
+	return (static_cast<unsigned int>(*max - *min));
+}
+
+int& Span::operator[](unsigned int index) {
+	if (index >= this->N)
+		throw std::out_of_range("Index out of bounds");
+	return (this->_numbers[index]);
+}
