@@ -10,11 +10,10 @@ private:
 public:
 	Span();
 	Span(const int N);
+	Span(const Span& copy);
+	~Span();
 
-	// Span(const Span& copy);
-	// ~Span();
-	// Span operator=(const Span& other);
-
+	Span& operator=(const Span& other);
 	int& operator[](unsigned int index);
 
 	void addNumber(const int num);

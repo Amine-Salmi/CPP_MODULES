@@ -1,15 +1,27 @@
 #include "Span.hpp"
 
-Span::Span() : _numbers(), N(0) {
-};
+Span::Span() : _numbers(), N(0) {};
 
-Span::Span(const int N) : _numbers(){
+Span::Span(const int N) : _numbers() {
 	if (N == 0)
 		throw std::runtime_error("Span size cannot be zero");
 	if (N < 0)
 		throw std::runtime_error("Span size must be positive");
 	this->N = static_cast<unsigned int>(N);
 };
+
+Span::Span(const Span& copy) : _numbers(copy._numbers) ,N(copy.N) {}
+
+Span &Span::operator=(const Span& other) {
+	if (this != &other)
+	{
+		this->N = other.N;
+		this->_numbers = other._numbers;
+	}
+	return (*this);
+}
+
+Span::~Span() {};
 
 void Span::addNumber(const int num) {
 	if (this->_numbers.size() < this->N)
@@ -23,7 +35,7 @@ int min(int a, int b) {
 }
 
 unsigned int Span::shortestSpan() {
-	if (this->_numbers.empty() || this->_numbers.size() <= 1)
+	if (this->_numbers.size() <= 1)
 		throw std::runtime_error("empty span");
 
 	std::vector<int> arrResult = this->_numbers;
@@ -35,12 +47,12 @@ unsigned int Span::shortestSpan() {
 }
 
 unsigned int Span::longestSpan() {
-	if (this->_numbers.empty() || this->_numbers.size() <= 1)
+	if (this->_numbers.size() <= 1)
 		throw std::runtime_error("empty span");
-	std::vector<int>::iterator max = std::max_element(this->_numbers.begin(), this->_numbers.end());
-	std::vector<int>::iterator min = std::min_element(this->_numbers.begin(), this->_numbers.end());
+	int max = *std::max_element(this->_numbers.begin(), this->_numbers.end());
+	int min = *std::min_element(this->_numbers.begin(), this->_numbers.end());
 
-	return (static_cast<unsigned int>(*max - *min));
+	return (static_cast<unsigned int>(max - min));
 }
 
 int& Span::operator[](unsigned int index) {

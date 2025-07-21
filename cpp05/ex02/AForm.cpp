@@ -52,7 +52,7 @@ void AForm::execute(Bureaucrat const & executor) const {
     this->action();
 }
 
-const char *AForm::GradeTooHighException::what() const throw () {
+const char *AForm::GradeTooHighException::what() const throw () { 
 	return ("Grade is too high");
 }
 
