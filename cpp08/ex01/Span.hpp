@@ -19,6 +19,7 @@ public:
 	int& operator[](unsigned int index);
 
 	void addNumber(const int num);
+	void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
 

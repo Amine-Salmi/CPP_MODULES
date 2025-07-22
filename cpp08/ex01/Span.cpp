@@ -8,6 +8,7 @@ Span::Span(const int N) : _numbers() {
 	if (N < 0)
 		throw std::runtime_error("Span size must be positive");
 	this->N = static_cast<unsigned int>(N);
+
 };
 
 Span::Span(const Span& copy) : _numbers(copy._numbers) ,N(copy.N) {}
@@ -30,14 +31,13 @@ void Span::addNumber(const int num) {
 		throw std::out_of_range("Span is full");
 }
 
-int min(int a, int b) {
-	return (a < b) ? a : b; 
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+	this->_numbers.insert(this->_numbers.end(), begin, end);
 }
 
 unsigned int Span::shortestSpan() {
 	if (this->_numbers.size() <= 1)
 		throw std::runtime_error("empty span");
-
 	std::vector<int> arrResult = this->_numbers;
 	std::sort(arrResult.begin(), arrResult.end());
 	unsigned int minSpan = std::numeric_limits<unsigned int>::max();
@@ -51,7 +51,6 @@ unsigned int Span::longestSpan() {
 		throw std::runtime_error("empty span");
 	int max = *std::max_element(this->_numbers.begin(), this->_numbers.end());
 	int min = *std::min_element(this->_numbers.begin(), this->_numbers.end());
-
 	return (static_cast<unsigned int>(max - min));
 }
 
