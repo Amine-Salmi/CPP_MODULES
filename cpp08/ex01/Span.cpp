@@ -28,16 +28,20 @@ void Span::addNumber(const int num) {
 	if (this->_numbers.size() < this->N)
 		_numbers.push_back(num);
 	else
-		throw std::out_of_range("Span is full");
+		throw std::out_of_range("Span is full: not all elements were added");
 }
 
 void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
-	this->_numbers.insert(this->_numbers.end(), begin, end);
+	while (begin != end)
+	{
+		this->_numbers.push_back(*begin);
+		begin++;
+	}
 }
 
 unsigned int Span::shortestSpan() {
 	if (this->_numbers.size() <= 1)
-		throw std::runtime_error("empty span");
+		throw std::runtime_error("Cannot compute span: not enough numbers stored");
 	std::vector<int> arrResult = this->_numbers;
 	std::sort(arrResult.begin(), arrResult.end());
 	unsigned int minSpan = std::numeric_limits<unsigned int>::max();
@@ -48,14 +52,14 @@ unsigned int Span::shortestSpan() {
 
 unsigned int Span::longestSpan() {
 	if (this->_numbers.size() <= 1)
-		throw std::runtime_error("empty span");
+		throw std::runtime_error("Cannot compute span: not enough numbers stored");
 	int max = *std::max_element(this->_numbers.begin(), this->_numbers.end());
 	int min = *std::min_element(this->_numbers.begin(), this->_numbers.end());
 	return (static_cast<unsigned int>(max - min));
 }
 
 int& Span::operator[](unsigned int index) {
-	if (index >= this->N)
+	if (index >= this->_numbers.size())
 		throw std::out_of_range("Index out of bounds");
 	return (this->_numbers[index]);
 }
