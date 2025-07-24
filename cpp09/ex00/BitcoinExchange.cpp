@@ -116,9 +116,9 @@ void BitcoinExchange::loadData() {
     dataFile.close();
 }
 
-void BitcoinExchange::processInput() {
+void BitcoinExchange::processInput(std::string inputFile) {
     std::string line;
-    std::ifstream dataFile("input.txt");
+    std::ifstream dataFile(inputFile);
     getline(dataFile, line);
     while (getline(dataFile, line)) {
         std::stringstream str(line);
@@ -141,7 +141,6 @@ void BitcoinExchange::processInput() {
         }
         std::map<std::string, double>::iterator it;
         date = trim(date);
-        // std::cout << "date : [" << date << "]" << std::endl;
         if (validDate(date) && validAmount(amount)) {
             it  = this->_data.find(date);
             if (it != this->_data.end()) {
@@ -158,7 +157,3 @@ void BitcoinExchange::processInput() {
     }
 }
 
-void BitcoinExchange::printData() {
-    for (std::map<std::string, double>::iterator it = this->_data.begin(); it != this->_data.end(); it++)
-        std::cout << "date: " << it->first << ", id: " << it->second << std::endl;
-}

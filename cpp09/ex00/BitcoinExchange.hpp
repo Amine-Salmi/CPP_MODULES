@@ -13,8 +13,7 @@ private:
     // float amount;
 public:
     void loadData();
-    void processInput();
-    void printData();
+    void processInput(std::string inputFile);
     bool validDate(const std::string& date) const;
     bool validAmount(double amount);
     // proccessInput -> read the user input file and print Result;
