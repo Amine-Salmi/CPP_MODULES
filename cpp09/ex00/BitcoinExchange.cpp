@@ -141,10 +141,17 @@ void BitcoinExchange::processInput() {
         }
         std::map<std::string, double>::iterator it;
         date = trim(date);
-        std::cout << "date : [" << date << "]" << std::endl;
+        // std::cout << "date : [" << date << "]" << std::endl;
         if (validDate(date) && validAmount(amount)) {
             it  = this->_data.find(date);
             if (it != this->_data.end()) {
+                std::cout << date << " => " << amount << " = " << amount * it->second << std::endl;
+            }
+            else
+            {
+                it = _data.upper_bound(date);
+                if (it != this->_data.begin())
+                    it--;
                 std::cout << date << " => " << amount << " = " << amount * it->second << std::endl;
             }
         }
