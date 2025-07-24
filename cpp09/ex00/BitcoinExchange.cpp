@@ -53,7 +53,20 @@ bool validRange(int year, int month, int days) {
     return (false);
 }
 
-void BitcoinExchange::validDate(const std::string& date) const{
+bool BitcoinExchange::validAmount(double amount) {
+    if (amount < 0)
+    {
+        std::cout << "Error: not a positive number." << std::endl;
+        return false;
+    }
+    if (amount > 1000) {
+        std::cout << "Error: too large a number." << std::endl;
+        return false;
+    }
+    return true;
+}
+
+bool BitcoinExchange::validDate(const std::string& date) const{
     int count = 0;
     bool allNumber = true;
     for (unsigned int i = 0; i < date.length(); i++)
@@ -66,28 +79,24 @@ void BitcoinExchange::validDate(const std::string& date) const{
     if (date.length() != 10 || count != 2 || !allNumber)
     {
         std::cout << "Error: bad input => " << date << std::endl;
-        return ;
+        return false;
     }
-    std::cout << date << "\n";
     size_t firstCompenent  = date.find("-");
     size_t secondCompenent  = date.find("-", firstCompenent + 1);
     std::string strYear = date.substr(0, firstCompenent);
     std::string strMonth = date.substr(firstCompenent + 1, secondCompenent - firstCompenent - 1);
     std::string strDays = date.substr(secondCompenent + 1);
 
-    int year = std::atoi(strYear.c_str());
-    int month = std::atoi(strMonth.c_str());
-    int days = std::atoi(strDays.c_str());
+    int year = std::atoi(strYear.c_str()); // should be change to strtoi
+    int month = std::atoi(strMonth.c_str()); // should be change to strtoi
+    int days = std::atoi(strDays.c_str()); // should be change to strtoi
 
     if (!validRange(year, month, days))
     {
-        std::cout << "Error: bad input => " << date << std::endl;;
-        return ;
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
     }
-    (void)days;
-    // std::cout << "years -> " << year << " | month -> " << month 
-    // << " | day -> " << day << std::endl;
-    
+    return true;
 }
 
 void BitcoinExchange::loadData() {
@@ -117,18 +126,28 @@ void BitcoinExchange::processInput() {
         std::string a;
         getline(str, date, '|');
         getline(str, a);
+        a = trim(a);
+        if (a.empty())
+        {
+            std::cout << "Error: bad input => " << line << std::endl;
+            continue;
+        }
         char *end;
         double amount = strtod(a.c_str(), &end);
-        (void)amount;
+        if (*end != '\0')
+        {
+            std::cout << "Error: not a number."<< std::endl;;
+            continue;
+        }
         std::map<std::string, double>::iterator it;
         date = trim(date);
-        validDate(date);
-        // it  = this->_data.find(date);
-        // if (it != this->_data.end()) {
-        //     std::cout << date << "=> " << amount << " = " << amount * it->second << std::endl;
-        // }
-        // else
-        //     std::cout << "Error: not found" << std::endl;
+        std::cout << "date : [" << date << "]" << std::endl;
+        if (validDate(date) && validAmount(amount)) {
+            it  = this->_data.find(date);
+            if (it != this->_data.end()) {
+                std::cout << date << " => " << amount << " = " << amount * it->second << std::endl;
+            }
+        }
     }
 }
 

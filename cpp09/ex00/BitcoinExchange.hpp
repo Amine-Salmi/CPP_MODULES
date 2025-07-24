@@ -15,8 +15,8 @@ public:
     void loadData();
     void processInput();
     void printData();
-    void validDate(const std::string& date) const;
-    void validAmount(double amount);
+    bool validDate(const std::string& date) const;
+    bool validAmount(double amount);
     // proccessInput -> read the user input file and print Result;
     // 
 };
