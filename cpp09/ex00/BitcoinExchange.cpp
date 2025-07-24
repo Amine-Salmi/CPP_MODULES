@@ -1,5 +1,95 @@
 #include "BitcoinExchange.hpp"
 
+std::string trim(std::string str) {
+    size_t first = str.find_first_not_of(" \t");
+    if (first == std::string::npos)
+        return ("");
+    size_t last = str.find_last_not_of(" \t");
+    return (str.substr(first, last - first + 1));
+}
+
+bool isLeapYear(int year) {
+    if (year % 4 == 0) {
+        if (year % 100 == 0) {
+            return (year % 400 == 0);
+        }
+        return (true);
+    }
+    return (false);
+}
+
+bool validRange(int year, int month, int days) {
+    bool validYear = false;
+    bool validMonth = false;
+    bool validDay = false;
+    if (month >= 1 && month <= 12)
+        validMonth = true;
+
+    std::time_t t = std::time(NULL);
+    std::tm *now = std::localtime(&t);
+    int currentYear = now->tm_year + 1900;
+    if (year <= currentYear && year >= 1900)
+        validYear = true;
+    int maxDays = 0;
+    switch (month)
+    {
+        case 1 : case 3 : case 5 : case 7 :
+        case 8 : case 10 : case 12 :
+            maxDays = 31;
+            break;
+        case 4 : case 6 : case 9 : case 11 :
+            maxDays = 30;
+            break;
+        case 2 :
+            if (isLeapYear(year))
+                maxDays = 29;
+            else
+                maxDays = 28;
+    }
+    if (days >= 1 && days <= maxDays)
+        validDay = true;
+    if (validYear && validMonth && validDay)
+        return (true);
+    return (false);
+}
+
+void BitcoinExchange::validDate(const std::string& date) const{
+    int count = 0;
+    bool allNumber = true;
+    for (unsigned int i = 0; i < date.length(); i++)
+    {
+        if (date[i] == '-')
+            count++;
+        if (!isdigit(date[i]) && date[i] != '-')
+            allNumber = false;
+    }
+    if (date.length() != 10 || count != 2 || !allNumber)
+    {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return ;
+    }
+    std::cout << date << "\n";
+    size_t firstCompenent  = date.find("-");
+    size_t secondCompenent  = date.find("-", firstCompenent + 1);
+    std::string strYear = date.substr(0, firstCompenent);
+    std::string strMonth = date.substr(firstCompenent + 1, secondCompenent - firstCompenent - 1);
+    std::string strDays = date.substr(secondCompenent + 1);
+
+    int year = std::atoi(strYear.c_str());
+    int month = std::atoi(strMonth.c_str());
+    int days = std::atoi(strDays.c_str());
+
+    if (!validRange(year, month, days))
+    {
+        std::cout << "Error: bad input => " << date << std::endl;;
+        return ;
+    }
+    (void)days;
+    // std::cout << "years -> " << year << " | month -> " << month 
+    // << " | day -> " << day << std::endl;
+    
+}
+
 void BitcoinExchange::loadData() {
     std::string line;
     std::ifstream dataFile("data.csv");
@@ -17,7 +107,7 @@ void BitcoinExchange::loadData() {
     dataFile.close();
 }
 
-void BitcoinExchange::parsInputFile() {
+void BitcoinExchange::processInput() {
     std::string line;
     std::ifstream dataFile("input.txt");
     getline(dataFile, line);
@@ -29,7 +119,16 @@ void BitcoinExchange::parsInputFile() {
         getline(str, a);
         char *end;
         double amount = strtod(a.c_str(), &end);
-        // std::cout << "Date: " << date << ", Amount: " << amount << std::endl;
+        (void)amount;
+        std::map<std::string, double>::iterator it;
+        date = trim(date);
+        validDate(date);
+        // it  = this->_data.find(date);
+        // if (it != this->_data.end()) {
+        //     std::cout << date << "=> " << amount << " = " << amount * it->second << std::endl;
+        // }
+        // else
+        //     std::cout << "Error: not found" << std::endl;
     }
 }
 

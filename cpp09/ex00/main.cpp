@@ -9,7 +9,7 @@ int main(int ac, char **av) {
     try {
         BitcoinExchange start;
         start.loadData();
-        start.parsInputFile();
+        start.processInput();
         // start.printData();
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;

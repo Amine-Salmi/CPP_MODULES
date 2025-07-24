@@ -4,6 +4,7 @@
 #include <fstream>
 #include <map>
 #include <sstream>
+#include <ctime>
 
 class BitcoinExchange {
 private:
@@ -12,8 +13,10 @@ private:
     // float amount;
 public:
     void loadData();
-    void parsInputFile();
-    void printData(); // loadData function -> load the Data.csv to container;
+    void processInput();
+    void printData();
+    void validDate(const std::string& date) const;
+    void validAmount(double amount);
     // proccessInput -> read the user input file and print Result;
     // 
 };
