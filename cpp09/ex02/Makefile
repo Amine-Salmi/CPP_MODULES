@@ -1,11 +1,11 @@
 NAME = PmergeMe
-# HEADER = RPN.hpp
+HEADER = PmergeMe.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 
 CPP = c++
 RM = rm -rf
 
-SRC = main.cpp
+SRC = main.cpp PmergeMe.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)
@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp #$(HEADER)
+%.o : %.cpp $(HEADER)
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean :
