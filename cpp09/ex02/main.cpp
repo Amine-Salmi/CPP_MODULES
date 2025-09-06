@@ -15,7 +15,8 @@ int fill_container(PmergeMe &p, char **av) {
     while (av[i]) {
         if (myStoi(av[i]) == -1)
             return (-1);
-        p.getContainer().push_back(myStoi(av[i]));
+        p.getVecContainer().push_back(myStoi(av[i]));
+        p.getDeqContainer().push_back(myStoi(av[i]));
         i++;
     }
     return (0);
@@ -61,7 +62,6 @@ void mergeSort(container& c) {
     if (c.size() % 2 != 0)
         S.push_back(c.back());
     mergeSort(L);
-
     container jacobsthal = generateJacobsthal<container>(S.size());
     std::vector<bool> flags(S.size(), false);
     for (size_t i = 0; i < jacobsthal.size(); i++) {
@@ -82,21 +82,45 @@ void mergeSort(container& c) {
     c = L;
 }
 
+void SortAndPrint(PmergeMe &p) {
+    std::cout << "Before: ";
+    for (size_t i = 0; i < p.getVecContainer().size(); i++)
+        std::cout << p.getVecContainer()[i] << " ";
+    std::cout << std::endl;
+
+    clock_t startTime = clock();
+    mergeSort(p.getVecContainer());
+    clock_t endTime = clock();
+    double vecTime = 1000000.0 * (endTime - startTime) / CLOCKS_PER_SEC;
+
+    startTime = clock();
+    mergeSort(p.getDeqContainer());
+    endTime = clock();
+    double deqTime = 1000000.0 * (endTime - startTime) / CLOCKS_PER_SEC;
+
+    std::cout << "After: ";
+    for (size_t i = 0; i < p.getVecContainer().size(); i++)
+        std::cout << p.getVecContainer()[i] << " ";
+    std::cout << std::endl;
+
+    std::cout << "Time to process a range of " << p.getVecContainer().size()
+    << "elements with std::vector : " << vecTime << " us" << std::endl;
+
+    std::cout << "Time to process a range of " << p.getDeqContainer().size()
+    << "elements with std::deque : " << deqTime << " us" << std::endl;
+}
+
 int main(int ac, char **av) {
     if (ac <= 1) {
-        std::cerr << "Error: bad arg !" << std::endl;
+        std::cerr << "Error" << std::endl;
         return (1);
     }
+
     PmergeMe p;
     if (fill_container(p, av) == -1) {
-        std::cerr << "Error: bad arg !" << std::endl;
+        std::cerr << "Error" << std::endl;
         return (1);    
     };
-    mergeSort<std::vector<int> >(p.getContainer());
-
-    for (size_t i = 0; i < p.getContainer().size(); i++) {
-        std::cout << p.getContainer()[i] << " ";
-    }
-    std::cout << std::endl;
+    SortAndPrint(p);
     return (0);
 }

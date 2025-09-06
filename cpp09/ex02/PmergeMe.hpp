@@ -5,6 +5,7 @@
 #include <vector>
 #include <deque>
 #include <algorithm>
+#include <ctime>
 
 class PmergeMe {
 private:
@@ -21,7 +22,9 @@ public:
 
     // template <typename container>
     // container generateJacobsthal(int size);
+    // void SortAndPrint();
 
-    std::vector<int>& getContainer();
+    std::vector<int>& getVecContainer();
+    std::deque<int>& getDeqContainer();
     ~PmergeMe();
 };
